@@ -1,0 +1,41 @@
+Index: src/Player.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.util.Scanner;\nimport static java.lang.Math.abs;\n\npublic class Player {\n    static Scanner myObj = new Scanner(System.in);\n    String name;\n    int score;\n    boolean move;\n    char Icon;\n    int moveCount;\n    public static int chosenx;\n    public static int choseny;\n\n    public Player(String pName, int pScore, boolean pMove, char pIcon){\n\n        name = pName;\n        score = pScore;\n        move = pMove;\n        Icon = pIcon;\n        moveCount = 0;\n\n    }\n    //getter for name\n    public static String getPlayerName(Player player) {\n        return player.name;\n    }\n    //getter for score\n    public static int getPlayerScore(Player player) {\n        return player.score;\n    }\n    //Show the user inputs name\n    public static int getMoveCount(Player player){return player.moveCount; }\n\n\n    public static String inputName() {\n\n        System.out.println(\"Enter the name of Player: \");\n        String name;\n\n        do {\n            name = myObj.nextLine();\n        } while (name == null);\n        System.out.println(name);\n        return name;\n    }\n\n\n\n    //Standard code for asking for the player to input a block\n    public int inputBlock(Blocks blocks, Board b1) {\n        String block = null;\n        String choice = null;\n        boolean hasBlockNum = false;\n        int blockNum = -1;\n        int x=-1;\n        int y=-1;\n        int pNum = -1;\n        int repeatCounter = 0;\n        this.moveCount = this.moveCount + 1;\n        if(this.Icon == 'X'){\n            pNum = 1;\n        } else {\n            //this.Icon == 'O'\n            pNum = 2;\n        }\n\n        while (!hasBlockNum) {\n            while(blockNum == -1) {\n                if (repeatCounter == 0) {\n\n                    System.out.println(getValidBlocks(blocks));\n                    System.out.println(\"Please enter which block you would like to place\");\n                    block = myObj.next();\n\n                } else if (repeatCounter != 0) {\n\n                    System.out.println(\"That is not a valid block\");\n                    System.out.println(\"Please enter which block you would like to place\");\n                    block = myObj.next();\n\n                }\n\n                if (Blocks.checkPieceName(blocks, block) == -1) {\n\n                } else {\n                    blockNum = Blocks.checkPieceName(blocks, block);\n                }\n                repeatCounter++;\n            }\n\n            if (pNum == 2) {\n                blockNum += 21;\n            }\n\n            //print your choice of block\n            Blocks.printBlock(blockNum);\n\n            while (choice == null) {\n\n                System.out.println(\"Would you like to place the block like this or rotate it or flip it?\");\n                System.out.println(\"Press p to place, Press r to rotate and Press f to flip\");\n                choice = myObj.next();\n\n\n                switch (choice) {\n\n                    case \"p\":\n\n                        choice = \"p\";\n                        break;\n\n                    case \"r\":\n\n                        blocks.rotateMatrix(blocks.pieces.get(blockNum));\n                        blocks.printBlock(blockNum);\n                        choice = null;\n                        break;\n\n                    case \"f\":\n\n                        blocks.flipMatrix(blocks.pieces.get(blockNum));\n                        blocks.printBlock(blockNum);\n                        choice = null;\n                        break;\n\n                    default:\n                        System.out.println(\"Invalid choice please try again\");\n                        choice = null;\n                }\n            }\n            while (x < 0 || x > 14) {\n                if (x != -1) {\n                    System.out.println(\"Please enter a valid X.\");\n                }\n                System.out.println(\"Which X cordinate would you like to place at\");\n                x = myObj.nextInt();\n            }\n\n            while (y < 0 || y > 14) {\n                if (y != -1) {\n                    System.out.println(\"Please enter a valid Y.\");\n                }\n                System.out.println(\"Which Y cordinate would you like to place at\");\n                y = myObj.nextInt();\n            }\n            this.chosenx = Math.abs(y- 13);\n            this.choseny = x ;\n            if (blockNum > 22) {\n                blockNum -= 21;\n            }\n            if (!blocks.checkMove(blocks, blockNum, b1, this.chosenx, this.choseny,this)) {\n                hasBlockNum = true;\n                return blockNum;\n            } else {\n                blockNum = -1;\n                repeatCounter = 0;\n                choice = null;\n                x=-1;\n                y=-1;\n                System.out.println(\"Please choose a valid combination\");\n                System.out.println();\n                System.out.println();\n            }\n        }\n        return blockNum;\n    }\n\n    public int getPlayerMoveCount() {\n        return this.moveCount;\n    }\n\n\n\n    public String getValidBlocks(Blocks playerblocks) {\n        String available = \"Blocks available:\";\n        for(int i = 0; i < playerblocks.placed.size(); i++){\n            if(!playerblocks.placed.get(i)){\n                available = available.concat(\" \" + playerblocks.piecename.get(i));\n            }\n        }\n        return available;\n    }\n}\n
+===================================================================
+diff --git a/src/Player.java b/src/Player.java
+--- a/src/Player.java	
++++ b/src/Player.java	
+@@ -1,5 +1,4 @@
+ import java.util.Scanner;
+-import static java.lang.Math.abs;
+ 
+ public class Player {
+     static Scanner myObj = new Scanner(System.in);
+@@ -145,7 +144,7 @@
+             }
+             this.chosenx = Math.abs(y- 13);
+             this.choseny = x ;
+-            if (blockNum > 22) {
++            if (blockNum > 20) {
+                 blockNum -= 21;
+             }
+             if (!blocks.checkMove(blocks, blockNum, b1, this.chosenx, this.choseny,this)) {
+Index: src/main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.io.File;\nimport java.io.FileNotFoundException;\nimport java.util.Scanner;\n\n\n\npublic class main {\n    public static void main(String[] args) {\n\n        String y = Player.inputName();\n        String x = Player.inputName();\n\n\n        Player p1 = new Player(y, 0, true, 'X');\n        Player p2 = new Player(x, 0, true, 'O');\n        Board b1 = new Board();\n        Board.printScoreboard(p1, p2);\n        Board.boardSetup(b1);\n        Board.printBoard(b1);\n        Blocks p1blocks = new Blocks(p1);\n        Blocks p2blocks = new Blocks(p2);\n        p1blocks.blocksSetup();\n        p2blocks.blocksSetup();\n\n        p1blocks.pushBlock(p1.inputBlock(p1blocks, b1), b1, Player.chosenx, Player.choseny);\n        Board.printBoard(b1);\n        p2blocks.pushBlock(p2.inputBlock(p2blocks, b1), b1, Player.chosenx, Player.choseny);\n        Board.printBoard(b1);\n        while (Blocks.moveExists(p1blocks, b1, p1) || Blocks.moveExists(p2blocks, b1, p2)) {\n\n            if (Blocks.moveExists(p1blocks, b1, p1)) {\n                p1blocks.pushBlock(p1.inputBlock(p1blocks, b1), b1, Player.chosenx, Player.choseny);\n                Board.printBoard(b1);\n            }\n            if (Blocks.moveExists(p2blocks, b1, p2)) {\n                p2blocks.pushBlock(p2.inputBlock(p2blocks, b1), b1, Player.chosenx, Player.choseny);\n                Board.printBoard(b1);\n\n                }\n        }\n        System.out.println(\"Game Over\");\n    }\n}\n\n
+===================================================================
+diff --git a/src/main.java b/src/main.java
+--- a/src/main.java	
++++ b/src/main.java	
+@@ -1,9 +1,3 @@
+-import java.io.File;
+-import java.io.FileNotFoundException;
+-import java.util.Scanner;
+-
+-
+-
+ public class main {
+     public static void main(String[] args) {
+ 

@@ -1,0 +1,276 @@
+Index: src/Player.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.awt.*;\nimport java.util.ArrayList;\nimport java.util.Scanner;\n\npublic class Player {\n\n    String name;\n    int score;\n    int moveCount;\n    char Icon;\n\n    public Player(String pName, int pScore, int pMoveCount, char pIcon) {\n\n        name = pName;\n        score = pScore;\n        moveCount = pMoveCount;\n        Icon = pIcon;\n\n    }\n\n    //getter for name\n    public static String getPlayerName(Player player) {\n        return player.name;\n    }\n\n    //getter for score\n    public static int getPlayerScore(Player player) {\n        return player.score;\n    }\n\n    //getter for moveCount\n    public static int getPlayerMoveCount(Player player) {\n        return player.moveCount;\n    }\n    //How the user inputs name\n\n    public static String inputName() {\n        String userName;\n\n        Scanner myObj = new Scanner(System.in);\n        System.out.println(\"Enter username\");\n        userName = myObj.nextLine();\n\n        return userName;\n    }\n\n    //Standard code for asking for the player to input a block\n    public int inputBlock(Blocks blocks) {\n        String block = null;\n        String choice = null;\n        boolean hasBlockNum = false;\n        int blockNum = -1;\n        this.moveCount = this.moveCount + 1;\n\n        Scanner myObj = new Scanner(System.in);\n        int repeatCounter = 0;\n\n        while (!hasBlockNum) {\n\n            if (repeatCounter == 0) {\n                System.out.println(\"You currently have the blocks: \" + getVaildBlocks(blocks));\n                System.out.println(\"Please enter which block you would like to place\");\n                block = myObj.nextLine();\n            }else if (repeatCounter != 0) {\n                System.out.println(\"That is not a valid block\");\n                System.out.println(\"Please enter which block you would like to place\");\n                block = myObj.nextLine();\n            }\n\n            if (block.equals(\"i1\") && !blocks.placed.get(0)) {\n                blockNum = 0;\n            } else if (block.equals(\"i2\") && !blocks.placed.get(1)) {\n                blockNum = 1;\n            } else if (block.equals(\"i3\") && !blocks.placed.get(2)) {\n                blockNum = 2;\n            } else if (block.equals(\"v3\") && !blocks.placed.get(3)) {\n                blockNum = 3;\n            } else if (blockNum == -1) {\n                continue;\n            }\n            //print your choice of block\n            Blocks.printBlock(blockNum);\n\n            while (choice == null) {\n                System.out.println(\"Would you like to place the block like this or rotate it or flip it?\");\n                System.out.println(\"Press p to place, Press r to rotate and Press f to flip\");\n                choice = myObj.nextLine();\n\n\n                switch (choice) {\n                    case \"p\":\n                        hasBlockNum = true;\n                        blocks.placed.set(blockNum, true);\n                        break;\n\n                    case \"r\":\n                        Blocks.rotateMatrix(7, Blocks.pieces.get(blockNum));\n                        Blocks.printBlock(blockNum);\n                        choice = null;\n                        break;\n\n                    case \"f\":\n                        Blocks.rotateMatrix(7, Blocks.pieces.get(blockNum));\n                        Blocks.rotateMatrix(7, Blocks.pieces.get(blockNum));\n                        Blocks.printBlock(blockNum);\n                        choice = null;\n                        break;\n\n                    default:\n                        System.out.println(\"Invalid choice please try again\");\n                }\n            }\n            repeatCounter++;\n        }\n\n        return blockNum;\n    }\n\n    public static ArrayList<String> getVaildBlocks(Blocks blocks) {\n        ArrayList<String> validList = new ArrayList<String>();\n        String blockName = null;\n        for (int x = 0; x < blocks.placed.size(); x++) {\n            if (!blocks.placed.get(x)) {\n                if (x == 0) {\n                    blockName = \"i1\";\n                } else if (x == 1) {\n                    blockName = \"i2\";\n                } else if (x == 2) {\n                    blockName = \"i3\";\n                } else if (x == 3) {\n                    blockName = \"v3\";\n                }\n                validList.add(blockName);\n            }\n        }\n        return validList;\n    }\n\n    public static String inputMove() {\n        String move;\n\n        Scanner myObj = new Scanner(System.in);\n        // have to put in the form\n        System.out.println(\"Please enter where you would like to place the block\");\n        move = myObj.nextLine();\n\n        return move;\n    }\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Player.java b/src/Player.java
+--- a/src/Player.java	(revision 97fd5b2b17ed4e6c5082151d721736c2f57e07f4)
++++ b/src/Player.java	(date 1645402144596)
+@@ -45,26 +45,37 @@
+     }
+ 
+     //Standard code for asking for the player to input a block
+-    public int inputBlock(Blocks blocks) {
++    public int inputBlock(Blocks blocks, Board b1) {
+         String block = null;
+         String choice = null;
+         boolean hasBlockNum = false;
+         int blockNum = -1;
+-        this.moveCount = this.moveCount + 1;
+-
++        int x;
++        int y;
++        int pNum = -1;
+         Scanner myObj = new Scanner(System.in);
+         int repeatCounter = 0;
++        this.moveCount = this.moveCount + 1;
++        if(this.Icon == 'X'){
++            pNum = 1;
++        } else {
++            //this.Icon == 'O'
++            pNum = 2;
++        }
+ 
+         while (!hasBlockNum) {
+-
+             if (repeatCounter == 0) {
++
+                 System.out.println("You currently have the blocks: " + getVaildBlocks(blocks));
+                 System.out.println("Please enter which block you would like to place");
+                 block = myObj.nextLine();
+-            }else if (repeatCounter != 0) {
++
++            } else if (repeatCounter != 0) {
++
+                 System.out.println("That is not a valid block");
+                 System.out.println("Please enter which block you would like to place");
+                 block = myObj.nextLine();
++
+             }
+ 
+             if (block.equals("i1") && !blocks.placed.get(0)) {
+@@ -78,39 +89,60 @@
+             } else if (blockNum == -1) {
+                 continue;
+             }
++
++            if (pNum == 2 && blockNum != -1){
++                blockNum += 4;
++            }
++
+             //print your choice of block
+             Blocks.printBlock(blockNum);
+ 
+             while (choice == null) {
++
+                 System.out.println("Would you like to place the block like this or rotate it or flip it?");
+                 System.out.println("Press p to place, Press r to rotate and Press f to flip");
+                 choice = myObj.nextLine();
+ 
+ 
+                 switch (choice) {
++
+                     case "p":
++
+                         hasBlockNum = true;
+-                        blocks.placed.set(blockNum, true);
+                         break;
+ 
+                     case "r":
++
+                         Blocks.rotateMatrix(7, Blocks.pieces.get(blockNum));
+                         Blocks.printBlock(blockNum);
+                         choice = null;
+                         break;
+ 
+                     case "f":
+-                        Blocks.rotateMatrix(7, Blocks.pieces.get(blockNum));
+-                        Blocks.rotateMatrix(7, Blocks.pieces.get(blockNum));
++
++                        // Blocks.rotateMatrix(7, Blocks.pieces.get(blockNum));
++                        // Blocks.rotateMatrix(7, Blocks.pieces.get(blockNum));
+                         Blocks.printBlock(blockNum);
+                         choice = null;
+                         break;
+ 
+                     default:
+                         System.out.println("Invalid choice please try again");
++                        choice = null;
+                 }
++            }
++            System.out.println("Which X cordinate would you like to place at");
++            x = myObj.nextInt();
++
++            System.out.println("Which Y cordinate would you like to place at");
++            y = myObj.nextInt();
++            if(Blocks.checkMove(blocks, blockNum, b1, x, y)) {
++                return blockNum;
++            } else {
++                System.out.println("That is not a vaild combination");
+             }
+             repeatCounter++;
++
+         }
+ 
+         return blockNum;
+@@ -136,15 +168,4 @@
+         return validList;
+     }
+ 
+-    public static String inputMove() {
+-        String move;
+-
+-        Scanner myObj = new Scanner(System.in);
+-        // have to put in the form
+-        System.out.println("Please enter where you would like to place the block");
+-        move = myObj.nextLine();
+-
+-        return move;
+-    }
+-
+ }
+Index: src/main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>public class main {\n    public static void main(String[] args) {\n        boolean decided = false;\n        boolean readfile = false;\n        System.out.println(\"Would you like to use a txt file?(1/0)\");\n        while(decided == false){\n            String tempstring = Player.inputName();\n            if(tempstring == \"1\"){\n                readfile = true;\n                decided = true;\n            }else if(tempstring == \"0\"){\n                decided = true;\n                continue;\n            }else{\n                System.out.println(\"Please try again with 1 or 0\");\n            }\n        }\n        if(readfile == true){\n\n        }else{\n            String y = Player.inputName();\n            String x = Player.inputName();\n\n            Player p1 = new Player(y, 0, 0, 'X');\n            Player p2 = new Player(x, 0, 0, 'O');\n            Board b1 = new Board();\n            Board.printScoreboard(p1, p2);\n            Board.boardSetup(b1);\n            Board.printBoard(b1);\n            Blocks p1blocks = new Blocks(p1);\n            Blocks p2blocks = new Blocks(p2);\n            p1blocks.blocksSetup();\n            p2blocks.blocksSetup();\n\n            p1blocks.addBlock(p1.inputBlock(p1blocks), b1);\n            Board.printBoard(b1);\n            System.out.println(p1.getPlayerMoveCount());\n            p2blocks.addBlock(p2.inputBlock(p2blocks), b1);\n            Board.printBoard(b1);\n            System.out.println(p2.getPlayerMoveCount());\n            p1blocks.addBlock(p1.inputBlock(p1blocks), b1);\n            Board.printBoard(b1);\n            System.out.println(p1.getPlayerMoveCount());\n            System.out.println(p1.getValidBlocks(p1blocks));\n        }\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main.java b/src/main.java
+--- a/src/main.java	(revision 97fd5b2b17ed4e6c5082151d721736c2f57e07f4)
++++ b/src/main.java	(date 1645402213373)
+@@ -1,6 +1,6 @@
+ public class main {
+     public static void main(String[] args) {
+-        boolean decided = false;
++      /*  boolean decided = false;
+         boolean readfile = false;
+         System.out.println("Would you like to use a txt file?(1/0)");
+         while(decided == false){
+@@ -17,7 +17,7 @@
+         }
+         if(readfile == true){
+ 
+-        }else{
++        }else{  */
+             String y = Player.inputName();
+             String x = Player.inputName();
+ 
+@@ -32,16 +32,12 @@
+             p1blocks.blocksSetup();
+             p2blocks.blocksSetup();
+ 
+-            p1blocks.addBlock(p1.inputBlock(p1blocks), b1);
++            p1blocks.addBlock(p1.inputBlock(p1blocks,b1), b1);
+             Board.printBoard(b1);
+-            System.out.println(p1.getPlayerMoveCount());
+-            p2blocks.addBlock(p2.inputBlock(p2blocks), b1);
++            p2blocks.addBlock(p2.inputBlock(p2blocks,b1), b1);
+             Board.printBoard(b1);
+-            System.out.println(p2.getPlayerMoveCount());
+-            p1blocks.addBlock(p1.inputBlock(p1blocks), b1);
++            p1blocks.addBlock(p1.inputBlock(p1blocks,b1), b1);
+             Board.printBoard(b1);
+-            System.out.println(p1.getPlayerMoveCount());
+-            System.out.println(p1.getValidBlocks(p1blocks));
+         }
+     }
+-}
++
+Index: src/Blocks.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.util.ArrayList;\n\npublic class Blocks {\n    static ArrayList<int[][]> pieces = new ArrayList<int[][]>();\n    ArrayList<Boolean> placed = new ArrayList<Boolean>();\n    int piecenumber;\n\n    Blocks(Player player) {\n        if (player.Icon == 'X') {\n            piecenumber = 1;\n        } else {\n            piecenumber = 2;\n        }\n    }\n    //i1=0, i2=1, i3=2, v3=3\n    public void blocksSetup() {\n        pieces.add(setBlock(this.piecenumber, \"i1\"));\n        placed.add(false);\n        pieces.add(setBlock(this.piecenumber, \"i2\"));\n        placed.add(false);\n        pieces.add(setBlock(this.piecenumber, \"i3\"));\n        placed.add(false);\n        pieces.add(setBlock(this.piecenumber, \"v3\"));\n        placed.add(false);\n\n    }\n\n    public static int[][] initArray() {\n        int[][] mat = {{0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0}};\n        return mat;\n    }\n\n    public static int[][] setBlock(int piecenumber, String blockName) {\n        int[][] tempArray = initArray();\n        if (blockName == \"i1\") {\n            tempArray[3][3] = piecenumber;\n            tempArray[2][2] = 3;\n            tempArray[4][2] = 3;\n            tempArray[2][4] = 3;\n            tempArray[4][4] = 3;\n        }\n        if (blockName == \"i2\") {\n            tempArray[3][3] = piecenumber;\n            tempArray[3][2] = piecenumber;\n            tempArray[2][1] = 3;\n            tempArray[4][1] = 3;\n            tempArray[2][4] = 3;\n            tempArray[4][4] = 3;\n        }\n        if (blockName == \"i3\") {\n            tempArray[3][3] = piecenumber;\n            tempArray[3][2] = piecenumber;\n            tempArray[3][4] = piecenumber;\n            tempArray[2][1] = 3;\n            tempArray[4][1] = 3;\n            tempArray[2][5] = 3;\n            tempArray[4][5] = 3;\n        }\n        if (blockName == \"v3\") {\n            tempArray[3][3] = piecenumber;\n            tempArray[3][2] = piecenumber;\n            tempArray[4][3] = piecenumber;\n            tempArray[2][1] = 3;\n            tempArray[4][1] = 3;\n            tempArray[2][5] = 3;\n            tempArray[5][2] = 3;\n            tempArray[5][4] = 3;\n        }\n        return tempArray;\n    }\n\n    public static void rotateMatrix(int N, int mat[][]) {\n        for (int x = 0; x < N / 2; x++) {\n            for (int y = x; y < N - x - 1; y++) {\n                int temp = mat[x][y];\n                mat[x][y] = mat[y][N - 1 - x];\n\n                mat[y][N - 1 - x] = mat[N - 1 - x][N - 1 - y];\n\n                mat[N - 1 - x][N - 1 - y] = mat[N - 1 - y][x];\n\n                mat[N - 1 - y][x] = temp;\n            }\n        }\n    }\n\n    public void addBlock(int blocknumber, Board board) {\n        //beninging game conditions\n        int x;\n        int tempx = 0;\n        int y;\n        int tempy = 0;\n        if (this.piecenumber == 1 && board.board[4][4] == 4) {\n            for (x = 0; x < 7; x++) {\n                for (y = 0; y < 7; y++) {\n                    //Array = 1 (or 'X')\n                    if (this.pieces.get(blocknumber)[y][x] == this.piecenumber) {\n                        tempx = x;\n                        tempy = y;\n                        placed.set(blocknumber, true);\n                        board.board[tempx + 1][tempy + 1] = 1;\n                    }\n                    if(this.pieces.get(blocknumber)[y][x] == 3) {\n                        tempx = x;\n                        tempy = y;\n                        board.board[tempx + 1][tempy + 1] = 3;\n                    }\n                }\n            }\n        } else if (this.piecenumber == 2 && board.board[9][9] == 5) {\n            for (x = 0; x < 7; x++) {\n                for (y = 0; y < 7; y++) {\n                    //Array = 1 (or 'X')\n                    if (this.pieces.get(blocknumber)[y][x] == this.piecenumber) {\n                        tempx = x;\n                        tempy = y;\n                        placed.set(blocknumber, true);\n                        board.board[tempx + 6][tempy + 6] = 2;\n                    }\n                }\n            }\n        }\n    }\n    public static void printBlock(int blockNum){\n        for (int x = 0; x < 7; x++) {\n            for (int y = 0; y < 7; y++) {\n                if (pieces.get(blockNum)[y][x] == 1 || pieces.get(blockNum)[y][x] == 2) {\n                    if (pieces.get(blockNum)[y][x] == 1) {\n                        System.out.print(\"X\");\n                    } else {\n                        System.out.print(\"O\");\n                    }\n                } else {\n                    System.out.print(\" \");\n                }\n            }\n            System.out.println();\n        }\n\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Blocks.java b/src/Blocks.java
+--- a/src/Blocks.java	(revision 97fd5b2b17ed4e6c5082151d721736c2f57e07f4)
++++ b/src/Blocks.java	(date 1645401958865)
+@@ -2,7 +2,7 @@
+ 
+ public class Blocks {
+     static ArrayList<int[][]> pieces = new ArrayList<int[][]>();
+-    ArrayList<Boolean> placed = new ArrayList<Boolean>();
++    static ArrayList<Boolean> placed = new ArrayList<Boolean>();
+     int piecenumber;
+ 
+     Blocks(Player player) {
+@@ -12,6 +12,7 @@
+             piecenumber = 2;
+         }
+     }
++
+     //i1=0, i2=1, i3=2, v3=3
+     public void blocksSetup() {
+         pieces.add(setBlock(this.piecenumber, "i1"));
+@@ -121,6 +122,67 @@
+             }
+         }
+     }
++    public static boolean checkMove(Blocks blocks, int piecenumber, Board playBoard, int x_axis, int y_axis) {
++        boolean possible = false;
++        if(placed.get(piecenumber) == true){
++            return possible;
++        }
++        int x_offset = x_axis - 3;
++        int y_offset = y_axis - 3;
++        for (int i = 0; i < 7; i++) {
++            for (int j = 0; j < 7; j++) {
++                if (i < 3 || j < 3) {
++                    boolean x_check = false;
++                    boolean y_check = false;
++                    for (int offset_check = 3; offset_check > -1; offset_check--) {
++                        if (y_axis - offset_check >= 0 && y_check == false) {
++                            y_offset = offset_check;
++                            y_check = true;
++                        }
++                        if (x_axis - offset_check >= 0 && x_check == false) {
++                            x_offset = offset_check;
++                            x_check = true;
++                        }
++                    }
++                }else{
++                    boolean x_check = false;
++                    boolean y_check = false;
++                    for (int offset_check = 3; offset_check > -1; offset_check--) {
++                        if (y_axis + offset_check <= 13 && y_check == false) {
++                            y_offset = offset_check;
++                            y_check = true;
++                        }
++                        if (x_axis + offset_check <= 13 && x_check == false) {
++                            x_offset = offset_check;
++                            x_check = true;
++                        }
++                    }
++                }
++                if((i == x_offset) && pieces.get(piecenumber)[i][j] == 1 || pieces.get(piecenumber)[i][j] == 2){
++                    return possible;
++                }
++                if((j == y_offset) && pieces.get(piecenumber)[i][j] == 1 || pieces.get(piecenumber)[i][j] == 2){
++                    return possible;
++                }
++                if(playBoard.board[x_axis - x_offset + i][y_axis + y_offset + j] == 0 && pieces.get(piecenumber)[i][j] == 0){
++                    continue;
++                }else{
++                    if(playBoard.board[x_axis - x_offset + i][y_axis + y_offset + j] == 1 || playBoard.board[x_axis - x_offset + i][y_axis + y_offset + j] == 2){
++                        if(pieces.get(piecenumber)[i][j] == 1 || pieces.get(piecenumber)[i][j] == 2){
++                            return possible;
++                        }
++                        if((playBoard.board[x_axis - x_offset + i][y_axis + y_offset + j] == 3) && pieces.get(piecenumber)[i][j] == 1 || pieces.get(piecenumber)[i][j] == 2){
++                            if(pieces.get(piecenumber)[i-1][j-1] == 3 || pieces.get(piecenumber)[i-1][j+1] == 3 || pieces.get(piecenumber)[i+1][j-1] == 3 || pieces.get(piecenumber)[i+1][j+1] == 3){
++                                possible = true;
++                            }
++                        }
++                    }
++                }
++            }
++        }
++        return possible;
++    }
++
+     public static void printBlock(int blockNum){
+         for (int x = 0; x < 7; x++) {
+             for (int y = 0; y < 7; y++) {

@@ -1,0 +1,19 @@
+<changelist name="Uncommitted_changes_before_Update_at_21_02_2022,_00_20_[Changes]" date="1645402858078" recycled="false" toDelete="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_02_2022,_00_20_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 21/02/2022, 00:20 [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/Blokusduo/Player.class" />
+    <option name="AFTER_PATH" value="out/production/Blokusduo/Player.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_02_2022,_00_20_[Changes]/Player.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/Blokusduo/Blocks.class" />
+    <option name="AFTER_PATH" value="out/production/Blokusduo/Blocks.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_02_2022,_00_20_[Changes]/Blocks.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/Blokusduo/main.class" />
+    <option name="AFTER_PATH" value="out/production/Blokusduo/main.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_21_02_2022,_00_20_[Changes]/main.class" />
+  </binary>
+</changelist>

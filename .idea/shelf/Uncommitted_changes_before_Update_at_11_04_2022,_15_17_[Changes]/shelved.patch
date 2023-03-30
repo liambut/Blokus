@@ -1,0 +1,259 @@
+Index: core/src/com/mygdx/game/Player.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.mygdx.game;\n\nimport java.util.Scanner;\nimport java.util.concurrent.TimeUnit;\n\nimport static com.mygdx.game.BlokusDuo.*;\nimport static java.lang.Math.abs;\n\npublic class Player {\n    static Scanner myObj = new Scanner(System.in);\n    String name;\n    int score;\n    boolean move;\n    char Icon;\n    int moveCount;\n    public static int chosenx;\n    public static int choseny;\n\n    public Player(String pName, int pScore, boolean pMove, char pIcon){\n\n        name = pName;\n        score = pScore;\n        move = pMove;\n        Icon = pIcon;\n        moveCount = 0;\n\n    }\n    //getter for name\n    public static String getPlayerName(Player player) {\n        return player.name;\n    }\n    //getter for score\n    public static int getPlayerScore(Player player) {\n        return player.score;\n    }\n    //Show the user inputs name\n    public static int getMoveCount(Player player){return player.moveCount; }\n\n\n    public static String inputName() {\n\n        System.out.println(\"Enter the name of Player: \");\n        String name;\n\n        do {\n            name = myObj.nextLine();\n        } while (name == null);\n        System.out.println(name);\n        return name;\n    }\n\n\n\n    //Standard code for asking for the player to input a block\n    public int inputBlock(Blocks blocks, Board b1) {\n        String block = null;\n        String choice = null;\n        boolean hasBlockNum = false;\n        int blockNum = -1;\n        int x=-1;\n        int UIX;\n        int UIY;\n        String xy;\n        String[]  xyint;\n        int y=-1;\n        int pNum = -1;\n        int repeatCounter = 0;\n        this.moveCount = this.moveCount + 1;\n        if(this.Icon == 'X'){\n            pNum = 1;\n        } else {\n            //this.Icon == 'O'\n            pNum = 2;\n        }\n\n        while (!hasBlockNum) {\n            while(blockNum == -1) {\n                if (repeatCounter == 0) {\n\n                    System.out.println(getValidBlocks(blocks));\n                    System.out.println(\"Please enter which block you would like to place\");\n                    block = scanFromUI.nextLine();\n                    if(block.contains(\"player1\")){\n                        block = block.replace(\"player1\", \"\");\n                    }else{\n                        block = block.replace(\"player2\", \"\");\n                    }\n                    System.out.println(block);\n\n\n                } else if (repeatCounter != 0) {\n\n                    System.out.println(\"That is not a valid block\");\n                    System.out.println(\"Please enter which block you would like to place\");\n                    block = scanFromUI.nextLine();\n                    if(block.contains(\"player1\")){\n                        block = block.replace(\"player1\", \"\");\n                    }else{\n                        block = block.replace(\"player2\", \"\");\n                    }\n                    System.out.println(block);\n\n                }\n\n                if (Blocks.checkPieceName(blocks, block) == -1) {\n\n                } else {\n                    blockNum = Blocks.checkPieceName(blocks, block);\n                }\n                repeatCounter++;\n            }\n\n            if (pNum == 2) {\n                blockNum += 21;\n            }\n\n            //print your choice of block\n            Blocks.printBlock(blockNum);\n\n            while (choice != \"p\") {\n\n                System.out.println(\"Would you like to place the block like this or rotate it or flip it?\");\n                System.out.println(\"Press p to place, Press r to rotate and Press f to flip\");\n                choice = scanFromUI.nextLine();\n\n\n                switch (choice) {\n\n                    case \"change\":\n\n                        block = scanFromUI.nextLine();\n                        if(block.contains(\"player1\")){\n                            block = block.replace(\"player1\", \"\");\n                        }else{\n                            block = block.replace(\"player2\", \"\");\n                        }\n                        if (Blocks.checkPieceName(blocks, block) == -1) {\n\n                        } else {\n                            blockNum = Blocks.checkPieceName(blocks, block);\n                        }\n                        repeatCounter = 0;\n                        choice = null;\n                        x=-1;\n                        y=-1;\n                        break;\n\n                    case \"test\":\n                        xy = scanFromUI.nextLine();\n                        xyint = xy.split(\":\");\n                        this.chosenx = Math.abs(Integer.parseInt(xyint[1])-13);\n                        this.choseny = Integer.parseInt(xyint[0]);\n                        boolean minused = false;\n                        if (blockNum > 20) {\n                            blockNum -= 21;\n                            minused = true;\n                        }\n                        boolean checker = blocks.checkMove(blocks, blockNum, b1, this.chosenx, this.choseny,this);\n                        if(minused){\n                            blockNum +=21;\n                        }\n                        System.out.println(\"done\");\n                        toUI.println(checker);\n                        choice = \"null\";\n                        break;\n\n                    case \"p\":\n\n                        choice = \"p\";\n                        break;\n\n                    case \"r\":\n\n                        blocks.rotateMatrix(blocks.pieces.get(blockNum));\n                        blocks.printBlock(blockNum);\n                        choice = \"null\";\n                        break;\n\n\n                    case \"f\":\n\n                        blocks.flipMatrix(blocks.pieces.get(blockNum));\n                        blocks.printBlock(blockNum);\n                        choice = \"null\";\n                        break;\n\n                }\n            }\n            if (blockNum > 20) {\n                blockNum -= 21;\n            }\n            if (!blocks.checkMove(blocks, blockNum, b1, this.chosenx, this.choseny,this)) {\n                hasBlockNum = true;\n                return blockNum;\n            } else {\n                blockNum = -1;\n                repeatCounter = 0;\n                choice = null;\n                x=-1;\n                y=-1;\n                System.out.println(\"Please choose a valid combination\");\n                System.out.println();\n                System.out.println();\n            }\n        }\n        return blockNum;\n    }\n\n    public int getPlayerMoveCount() {\n        return this.moveCount;\n    }\n\n\n\n    public String getValidBlocks(Blocks playerblocks) {\n        String available = \"Blocks available:\";\n        for(int i = 0; i < playerblocks.placed.size(); i++){\n            if(!playerblocks.placed.get(i)){\n                available = available.concat(\" \" + playerblocks.piecename.get(i));\n            }\n        }\n        return available;\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/core/src/com/mygdx/game/Player.java b/core/src/com/mygdx/game/Player.java
+--- a/core/src/com/mygdx/game/Player.java	(revision 7b648572b6610ca9ea7d4d1b4b2d86558eada4d4)
++++ b/core/src/com/mygdx/game/Player.java	(date 1649680887374)
+@@ -15,6 +15,7 @@
+     int moveCount;
+     public static int chosenx;
+     public static int choseny;
++    static String lastPiecePlaced;
+ 
+     public Player(String pName, int pScore, boolean pMove, char pIcon){
+ 
+@@ -85,6 +86,7 @@
+                     }else{
+                         block = block.replace("player2", "");
+                     }
++                    block = lastPiecePlaced;
+                     System.out.println(block);
+ 
+ 
+@@ -98,6 +100,7 @@
+                     }else{
+                         block = block.replace("player2", "");
+                     }
++                    block = lastPiecePlaced;
+                     System.out.println(block);
+ 
+                 }
+@@ -221,4 +224,34 @@
+         }
+         return available;
+     }
++
++    private static boolean allBlocksPlaced(Blocks playerBlocks) {
++        for (int x = 0; x < 21; x++) {
++            if (playerBlocks.placed.get(x)) {
++
++            } else {
++                return false;
++            }
++        }
++        return true;
++    }
++    public static int calculatePlayerScore(Blocks playerBlocks){
++        int TotalScore = 0;
++        int temp = 0;
++
++        for(int x = 0; x < 21; x++){
++            if(!playerBlocks.placed.get(x)){
++                temp = playerBlocks.value.get(x);
++                TotalScore += temp;
++            }
++        }
++            if(lastPiecePlaced == "I1" && allBlocksPlaced(playerBlocks)){
++                TotalScore -= 5;
++            }
++            if(allBlocksPlaced(playerBlocks)) {
++                TotalScore -= 15;
++            }
++
++        return TotalScore * -1;
++    }
+ }
+\ No newline at end of file
+Index: core/src/com/mygdx/game/Blocks.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.mygdx.game;\n\nimport java.util.ArrayList;\n\npublic class Blocks {\n    static ArrayList<int[][]> pieces = new ArrayList<int[][]>();\n    ArrayList<Boolean> placed = new ArrayList<Boolean>();\n    ArrayList<String> piecename = new ArrayList<>();\n    int piecenumber;\n\n    Blocks(Player player) {\n        if (player.Icon == 'X') {\n            piecenumber = 1;\n        } else {\n            piecenumber = 2;\n        }\n    }\n\n    public void blocksSetup() {\n        pieces.add(setBlock(this.piecenumber, \"I1\"));\n        placed.add(false);\n        pieces.add(setBlock(this.piecenumber, \"I2\"));\n        placed.add(false);\n        pieces.add(setBlock(this.piecenumber, \"I3\"));\n        placed.add(false);\n        pieces.add(setBlock(this.piecenumber, \"I4\"));\n        placed.add(false);\n        pieces.add(setBlock(this.piecenumber, \"I5\"));\n        placed.add(false);\n        pieces.add(setBlock(this.piecenumber, \"V3\"));\n        placed.add(false);\n        pieces.add(setBlock(this.piecenumber, \"L4\"));\n        placed.add(false);\n        pieces.add(setBlock(this.piecenumber, \"Z4\"));\n        placed.add(false);\n        pieces.add(setBlock(this.piecenumber, \"O4\"));\n        placed.add(false);\n        pieces.add(setBlock(this.piecenumber, \"L5\"));\n        placed.add(false);\n        pieces.add(setBlock(this.piecenumber, \"T5\"));\n        placed.add(false);\n        pieces.add(setBlock(this.piecenumber, \"V5\"));\n        placed.add(false);\n        pieces.add(setBlock(this.piecenumber, \"N\"));\n        placed.add(false);\n        pieces.add(setBlock(this.piecenumber, \"Z5\"));\n        placed.add(false);\n        pieces.add(setBlock(this.piecenumber, \"T4\"));\n        placed.add(false);\n        pieces.add(setBlock(this.piecenumber, \"P\"));\n        placed.add(false);\n        pieces.add(setBlock(this.piecenumber, \"W\"));\n        placed.add(false);\n        pieces.add(setBlock(this.piecenumber, \"U\"));\n        placed.add(false);\n        pieces.add(setBlock(this.piecenumber, \"F\"));\n        placed.add(false);\n        pieces.add(setBlock(this.piecenumber, \"X\"));\n        placed.add(false);\n        pieces.add(setBlock(this.piecenumber, \"Y\"));\n        placed.add(false);\n    }\n\n\n    public static int[][] initArray() {\n        int[][] mat = {{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, };\n        return mat;\n    }\n\n    public int[][] setBlock(int piecenumber, String blockName) {\n        int[][] tempArray = initArray();\n        tempArray[5][5] = 6;\n        if (blockName == \"I1\") {\n        }\n        if (blockName.equals(\"I2\")) {\n            tempArray[4][5] = piecenumber;\n        }\n        if (blockName.equals(\"I3\")) {\n            tempArray[4][5] = piecenumber;\n            tempArray[3][5] = piecenumber;\n            tempArray[6][8] = 3;\n            tempArray[4][8] = 3;\n            tempArray[6][4] = 3;\n            tempArray[4][4] = 3;\n        }\n\n        if (blockName.equals(\"I4\")) {\n            tempArray[4][5] = piecenumber;\n            tempArray[3][5] = piecenumber;\n            tempArray[2][5] = piecenumber;\n        }\n\n        if (blockName.equals(\"I5\")) {\n            tempArray[4][5] = piecenumber;\n            tempArray[3][5] = piecenumber;\n            tempArray[2][5] = piecenumber;\n            tempArray[1][5] = piecenumber;\n        }\n\n        if (blockName.equals(\"V3\")) {\n            tempArray[4][5] = piecenumber;\n            tempArray[5][6] = piecenumber;\n        }\n\n        if (blockName.equals(\"L4\")) {\n            tempArray[4][5] = piecenumber;\n            tempArray[3][5] = piecenumber;\n            tempArray[5][6] = piecenumber;\n        }\n\n        if (blockName.equals(\"Z4\")) {\n            tempArray[4][5] = piecenumber;\n            tempArray[5][4] = piecenumber;\n            tempArray[4][6] = piecenumber;\n        }\n\n        if (blockName.equals(\"O4\")) {\n            tempArray[4][5] = piecenumber;\n            tempArray[4][6] = piecenumber;\n            tempArray[5][6] = piecenumber;\n        }\n\n        if (blockName.equals(\"L5\")) {\n            tempArray[4][5] = piecenumber;\n            tempArray[5][6] = piecenumber;\n            tempArray[5][7] = piecenumber;\n            tempArray[5][8] = piecenumber;\n        }\n\n        if (blockName.equals(\"T5\")) {\n            tempArray[4][5] = piecenumber;\n            tempArray[3][5] = piecenumber;\n            tempArray[5][4] = piecenumber;\n            tempArray[5][6] = piecenumber;\n        }\n\n        if (blockName.equals(\"V5\")) {\n            tempArray[4][5] = piecenumber;\n            tempArray[3][5] = piecenumber;\n            tempArray[5][6] = piecenumber;\n            tempArray[5][7] = piecenumber;\n        }\n\n        if (blockName.equals(\"N\")) {\n            tempArray[5][6] = piecenumber;\n            tempArray[5][7] = piecenumber;\n            tempArray[6][5] = piecenumber;\n            tempArray[6][4] = piecenumber;\n        }\n\n        if (blockName.equals(\"Z5\")) {\n            tempArray[5][6] = piecenumber;\n            tempArray[5][4] = piecenumber;\n            tempArray[4][6] = piecenumber;\n            tempArray[6][4] = piecenumber;\n        }\n\n        if (blockName.equals(\"T4\")) {\n            tempArray[4][5] = piecenumber;\n            tempArray[5][6] = piecenumber;\n            tempArray[5][4] = piecenumber;\n        }\n\n        if (blockName.equals(\"P\")) {\n            tempArray[6][5] = piecenumber;\n            tempArray[7][5] = piecenumber;\n            tempArray[5][6] = piecenumber;\n            tempArray[6][6] = piecenumber;\n        }\n\n        if (blockName.equals(\"W\")) {\n            tempArray[4][5] = piecenumber;\n            tempArray[4][6] = piecenumber;\n            tempArray[5][4] = piecenumber;\n            tempArray[6][4] = piecenumber;\n        }\n\n        if (blockName.equals(\"U\")) {\n            tempArray[4][5] = piecenumber;\n            tempArray[6][5] = piecenumber;\n            tempArray[4][6] = piecenumber;\n            tempArray[6][6] = piecenumber;\n        }\n\n        if (blockName.equals(\"F\")) {\n            tempArray[4][5] = piecenumber;\n            tempArray[4][6] = piecenumber;\n            tempArray[5][4] = piecenumber;\n            tempArray[6][5] = piecenumber;\n        }\n\n        if (blockName.equals(\"X\")) {\n            tempArray[5][6] = piecenumber;\n            tempArray[6][5] = piecenumber;\n            tempArray[5][4] = piecenumber;\n            tempArray[4][5] = piecenumber;\n        }\n\n        if (blockName.equals(\"Y\")) {\n            tempArray[4][5] = piecenumber;\n            tempArray[5][4] = piecenumber;\n            tempArray[5][6] = piecenumber;\n            tempArray[5][7] = piecenumber;\n        }\n        this.piecename.add(blockName);\n        return tempArray;\n    }\n\n    public static void rotateMatrix( int mat[][]) {\n        int x = 0;\n        int y = 0;\n        for (x = 0; x < 11 / 2; x++) {\n            for (y = x; y < 11 - x - 1; y++) {\n                int temp = mat[x][y];\n                mat[x][y] = mat[11 - 1 - y][x];\n                mat[11 - 1 - y][x] = mat[11 - 1 -x][11 - 1 - y];\n                mat[11 - 1 - x][11 - 1 - y] = mat[y][11 - 1 - x];\n                mat[y][11 - 1 - x] = temp;\n            }\n        }\n    }\n\n    public static void flipMatrix(int mat[][]) {\n        for(int y = 0;y < 11/2; y++){\n            for(int x = 0;x < 11; x++){\n                int temp = mat[x][y];\n                mat[x][y] = mat[x][10 - y];\n                mat[x][10 - y] = temp;\n            }\n\n        }\n    }\n\n\n    public static int checkPieceName(Blocks blocks, String pieceName) {\n        for (int i = 0; i < 21; i++) {\n            if (blocks.piecename.get(i).equals(pieceName) && !blocks.placed.get(i)) {\n                return i;\n            }\n        }\n        return -1;\n    }\n\n    public static boolean coversStartPosition(Blocks blocks, int blockNumber, int x_axis, int y_axis) {\n        boolean result = false;\n        for (int x = 0; x < 11; x++) {\n            for (int y = 0; y < 11; y++) {\n                if (pieces.get(blockNumber)[x][y] == blocks.piecenumber || pieces.get(blockNumber)[x][y] == 6) {\n                    if (x_axis + x - 5 == 4 && y_axis + y - 5 == 4 || x_axis + x - 5 == 9 && y_axis + y - 5  == 9) {\n                        result = true;\n                    }\n                }\n            }\n        }\n        return result;\n    }\n\n    private boolean boardSquareTouchesAtASide(int blockNumber,Board playBoard, int x_axis, int y_axis) {\n        boolean result = false;\n        if(this.piecenumber == 2){\n            blockNumber += 21;\n        }\n        for (int x = 0; x < 11; x++) {\n            for (int y = 0; y < 11; y++) {\n                if (pieces.get(blockNumber)[x][y] == this.piecenumber || pieces.get(blockNumber)[x][y] == 6) {\n                    if(y_axis + y - 5 < 0 || y_axis + y - 5 > 13){\n                        return false;\n                    } if (x_axis + x - 4 < 0 || x_axis + x - 4 > 13) {\n                        if(playBoard.board[x_axis + x - 6][y_axis + y - 5] == this.piecenumber){\n                            return true;\n                        }\n                    }\n                    if(x_axis + x - 6 > 13 || x_axis + x - 6 < 0 ){\n                        if(playBoard.board[x_axis + x - 4][y_axis + y - 5] == this.piecenumber){\n                            return true;\n                        }\n                    }\n                    if(y_axis + y - 4 < 0 || y_axis + y - 4 > 13 ){\n                        if(playBoard.board[x_axis + x - 5][y_axis + y - 6] == this.piecenumber){\n                            return true;\n                        }\n                    }\n                    if(y_axis + y - 6 < 0 || y_axis + y - 6 > 13){\n                        if(playBoard.board[x_axis + x - 5][y_axis + y - 4] == this.piecenumber){\n                            return true;\n                        }\n                    } if(y_axis + y - 4 < 0 || y_axis + y - 4 > 13 || y_axis + y - 6 < 0 || y_axis + y - 6 > 13 ||\n                         x_axis + x - 6 > 13 || x_axis + x - 6 < 0 ||x_axis + x - 4 < 0 || x_axis + x - 4 > 13){\n                        return false;\n                    } else {\n                        if ((playBoard.board[x_axis + x - 4][y_axis + y - 5] == this.piecenumber) ||\n                            playBoard.board[x_axis + x - 6][y_axis + y - 5] == this.piecenumber ||\n                            playBoard.board[x_axis + x - 5][y_axis + y - 4] == this.piecenumber ||\n                            playBoard.board[x_axis + x - 5][y_axis + y - 6] == this.piecenumber) {\n                            result = true;\n                        }\n                    }\n                }\n            }\n        }\n        return result;\n    }\n\n    private boolean boardSquareTouchesAtACorner(int blockNumber ,Board playBoard, int x_axis, int y_axis) {\n        boolean result = false;\n        if(this.piecenumber == 2){\n            blockNumber += 21;\n            System.out.println(blockNumber);\n        }\n        for (int x = 0; x < 11; x++) {\n            for (int y = 0; y < 11; y++) {\n                if (pieces.get(blockNumber)[x][y] == this.piecenumber || pieces.get(blockNumber)[x][y] == 6) {\n                    if (x_axis + x - 4 == 14 &&  y_axis + y - 4 == 14){\n                        if(playBoard.board[x_axis + x - 6][y_axis + y - 6] == this.piecenumber){\n                            return true;\n                        }\n                    } if (x_axis + x - 6 == -1 &&  y_axis + y - 6 == -1){\n                        if(playBoard.board[x_axis + x - 4][y_axis + y - 4] == this.piecenumber){\n                            return true;\n                        }\n                    } if (x_axis + x - 4 == -1 &&  y_axis + y - 6 == 14){\n                        if(playBoard.board[x_axis + x - 4][y_axis + y - 4] == this.piecenumber){\n                            return true;\n                        }\n                    } if (x_axis + x - 6 == 14 &&  y_axis + y - 4 == -1){\n                        if(playBoard.board[x_axis + x - 4][y_axis + y - 4] == this.piecenumber){\n                            return true;\n                        }\n                    } else if (x_axis + x - 4 < 0 || x_axis + x - 4 > 13){\n                        if(y_axis + y - 4 == -1 || y_axis + y - 4 == 14 || x_axis + x - 6 == -1 ||x_axis + x - 6 == 14 || y_axis + y - 6 ==-1 || y_axis + y - 6==14) {\n                            break;\n                        }else if(playBoard.board[x_axis + x - 6][y_axis + y - 4] == this.piecenumber ||\n                                 playBoard.board[x_axis + x - 6][y_axis + y - 6] == this.piecenumber){\n                            return true;\n                        }\n                    } else if(x_axis + x - 6 < 0|| x_axis + x - 6 > 13){\n                        if(y_axis + y - 4 == -1 || y_axis + y - 4 == 14 || x_axis + x - 4 == -1 || x_axis + x - 4 == 14 || y_axis + y - 6 == -1 || y_axis + y - 6 == 14) {\n                            break;\n                        }else if(playBoard.board[x_axis + x - 4][y_axis + y - 4] == this.piecenumber ||\n                                 playBoard.board[x_axis + x - 4][y_axis + y - 6] == this.piecenumber ){\n                            return true;\n                        }\n                    } else if(y_axis + y - 6 < 0 || y_axis + y - 6 > 13){\n                        if(y_axis + y - 4 == 0 || y_axis + y - 4 == 14) {\n                            break;\n                        }else if(playBoard.board[x_axis + x - 4][y_axis + y - 4] == this.piecenumber ||\n                                 playBoard.board[x_axis + x - 6][y_axis + y - 4] == this.piecenumber ){\n                            return true;\n                        }\n                    } else if (y_axis + y - 4 > 13 || y_axis + y - 4 < 0){\n                        if(y_axis + y - 6 == 0 || y_axis + y - 6 == 14) {\n                            break;\n                        }else if(playBoard.board[x_axis + x - 4][y_axis + y - 6] == this.piecenumber ||\n                                 playBoard.board[x_axis + x - 6][y_axis + y - 6] == this.piecenumber ){\n                            return true;\n                        }\n                    } else {\n                        if ((playBoard.board[x_axis + x - 4][y_axis + y - 4] == this.piecenumber) ||\n                            playBoard.board[x_axis + x - 6][y_axis + y - 4] == this.piecenumber ||\n                            playBoard.board[x_axis + x - 4][y_axis + y - 6] == this.piecenumber ||\n                            playBoard.board[x_axis + x - 6][y_axis + y - 6] == this.piecenumber) {\n                            result = true;\n                        }\n                    }\n                }\n            }\n        }\n        return result;\n    }\n    private boolean touchesSamePlayerPiecesOnlyAtCorners(int blockNumber ,Board playBoard, int x_axis, int y_axis) {\n        boolean atLeastOneSquareTouchesAtASide = false;\n        boolean atLeastOneSquareTouchesAtCorner = false;\n        for (int x = 0; x < 11; x++) {\n            for (int y = 0; y < 11; y++) {\n                if (pieces.get(blockNumber)[x][y] == this.piecenumber || pieces.get(blockNumber)[x][y] == 6) {\n                    if (boardSquareTouchesAtACorner(blockNumber,playBoard,x_axis, y_axis)) {\n                        atLeastOneSquareTouchesAtCorner = true;\n                    }\n                    if (boardSquareTouchesAtASide(blockNumber,playBoard,x_axis, y_axis)) {\n                        atLeastOneSquareTouchesAtASide = true;\n                    }\n                }\n            }\n        }\n        return  atLeastOneSquareTouchesAtCorner && (! atLeastOneSquareTouchesAtASide);\n    }\n\n\n    public boolean checkMove(Blocks blocks, int blockNumber, Board playBoard, int x_axis, int y_axis, Player p) {\n        boolean result = false;\n        System.out.println(p.moveCount);\n        if(p.moveCount == 1) {\n            if (Blocks.coversStartPosition(blocks, blockNumber, x_axis, y_axis)){\n            } else {\n                System.out.println(\"1\");\n                result = true;\n            }\n        }\n        for (int x = 0; x < 11; x++) {\n            //int x_offset = 0;\n            for (int y = 0; y < 11; y++) {\n                if (pieces.get(blockNumber)[x][y] == this.piecenumber || pieces.get(blockNumber)[x][y] == 6) {\n                    // outside bounds\n                    if (((x - 5 + x_axis) < 0) || ((x - 5 + x_axis) > Board.getWidth()) || ((y - 5 + y_axis) < 0) || ((y - 5 + y_axis) > Board.getHeight())) {\n                        return true;\n                    }\n                    //Another block placed\n                    if (playBoard.board[x_axis + x - 5][y_axis + y - 5] == 1 || playBoard.board[x_axis + x - 5][y_axis + y - 5] == 2) {\n                        return true;\n                    }\n                }\n            }\n\n        }\n        if(p.moveCount != 1){\n            if(touchesSamePlayerPiecesOnlyAtCorners(blockNumber,playBoard,x_axis,y_axis)){\n\n            } else {\n                result = true;\n            }\n        }\n        return result;\n    }\n\n    public void pushBlock(int blockNumber, Board playBoard, int x_axis, int y_axis){\n        for(int x = 0; x < 11; x++){\n            for(int y = 0; y < 11; y++){\n                if(this.piecenumber == 1){\n                    if(Blocks.pieces.get(blockNumber)[x][y] == 1 || Blocks.pieces.get(blockNumber)[x][y] == 6){\n                        playBoard.board[x_axis + x - 5][y_axis + y - 5] = 1;\n                    }\n                } else {\n                    if(Blocks.pieces.get(blockNumber +21)[x][y] == 2 || Blocks.pieces.get(blockNumber +21)[x][y] == 6){\n                        playBoard.board[x_axis + x - 5][y_axis + y - 5] = 2;\n                    }\n                }\n            }\n        }\n        placed.set(blockNumber, true);\n    }\n\n    public static boolean moveExists(Blocks blocks, Board playBoard,Player p) {\n        String[] adjustments = {\"\", \"r\", \"r\", \"r\", \"r\", \"f\", \"r\", \"r\", \"r\"};\n        for(int i = 0; i < 21; i++) {\n            if (blocks.placed.get(i)) {\n                break;\n            }\n            for(int x = 0; x < 14; x++) {\n                for(int y = 0; y < 14; y++) {\n                    for(int j = 0; j < adjustments.length; j++) {\n                        String choice = adjustments[j];\n                        switch (choice) {\n\n                            case \"r\":\n\n                                rotateMatrix(blocks.pieces.get(i));\n                                adjustments[j] = \"r\";\n                                break;\n\n                            case \"f\":\n\n                                flipMatrix(blocks.pieces.get(i));\n                                adjustments[j] = \"f\";\n                                break;\n\n                            default:\n                                break;\n                        }\n                        if (blocks.checkMove(blocks, i, playBoard, x, y, p)) {\n                            return true;\n                        }\n                    }\n                }\n            }\n        }\n        return false;\n    }\n\n    public static void printBlock(int blockNum) {\n        for (int x = 0; x < 11; x++) {\n            for (int y = 0; y < 11; y++) {\n                if (pieces.get(blockNum)[x][y] == 1 || pieces.get(blockNum)[x][y] == 2 || pieces.get(blockNum)[x][y] == 6) {\n\n                    if (pieces.get(blockNum)[x][y] == 1) {\n                        System.out.print(\"X\");\n                    } else if(pieces.get(blockNum)[x][y] == 2){\n                        System.out.print(\"O\");\n                    } else if(pieces.get(blockNum)[x][y] == 6){\n                        System.out.print(\"+\");\n                    }\n                } else {\n                    System.out.print(\" \");\n                }\n            }\n            System.out.println();\n        }\n\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/core/src/com/mygdx/game/Blocks.java b/core/src/com/mygdx/game/Blocks.java
+--- a/core/src/com/mygdx/game/Blocks.java	(revision 7b648572b6610ca9ea7d4d1b4b2d86558eada4d4)
++++ b/core/src/com/mygdx/game/Blocks.java	(date 1649677329089)
+@@ -6,6 +6,8 @@
+     static ArrayList<int[][]> pieces = new ArrayList<int[][]>();
+     ArrayList<Boolean> placed = new ArrayList<Boolean>();
+     ArrayList<String> piecename = new ArrayList<>();
++    ArrayList<Integer> value = new ArrayList<>();
++
+     int piecenumber;
+ 
+     Blocks(Player player) {
+@@ -19,46 +21,67 @@
+     public void blocksSetup() {
+         pieces.add(setBlock(this.piecenumber, "I1"));
+         placed.add(false);
++        value.add(1);
+         pieces.add(setBlock(this.piecenumber, "I2"));
+         placed.add(false);
++        value.add(2);
+         pieces.add(setBlock(this.piecenumber, "I3"));
+         placed.add(false);
++        value.add(3);
+         pieces.add(setBlock(this.piecenumber, "I4"));
+         placed.add(false);
++        value.add(4);
+         pieces.add(setBlock(this.piecenumber, "I5"));
+         placed.add(false);
++        value.add(5);
+         pieces.add(setBlock(this.piecenumber, "V3"));
+         placed.add(false);
++        value.add(3);
+         pieces.add(setBlock(this.piecenumber, "L4"));
+         placed.add(false);
++        value.add(4);
+         pieces.add(setBlock(this.piecenumber, "Z4"));
+         placed.add(false);
++        value.add(4);
+         pieces.add(setBlock(this.piecenumber, "O4"));
+         placed.add(false);
++        value.add(4);
+         pieces.add(setBlock(this.piecenumber, "L5"));
+         placed.add(false);
++        value.add(5);
+         pieces.add(setBlock(this.piecenumber, "T5"));
+         placed.add(false);
++        value.add(5);
+         pieces.add(setBlock(this.piecenumber, "V5"));
+         placed.add(false);
++        value.add(5);
+         pieces.add(setBlock(this.piecenumber, "N"));
+         placed.add(false);
++        value.add(5);
+         pieces.add(setBlock(this.piecenumber, "Z5"));
+         placed.add(false);
++        value.add(5);
+         pieces.add(setBlock(this.piecenumber, "T4"));
+         placed.add(false);
++        value.add(4);
+         pieces.add(setBlock(this.piecenumber, "P"));
+         placed.add(false);
++        value.add(5);
+         pieces.add(setBlock(this.piecenumber, "W"));
+         placed.add(false);
++        value.add(5);
+         pieces.add(setBlock(this.piecenumber, "U"));
+         placed.add(false);
++        value.add(5);
+         pieces.add(setBlock(this.piecenumber, "F"));
+         placed.add(false);
++        value.add(5);
+         pieces.add(setBlock(this.piecenumber, "X"));
+         placed.add(false);
++        value.add(5);
+         pieces.add(setBlock(this.piecenumber, "Y"));
+         placed.add(false);
++        value.add(5);
+     }
+ 
+ 
+@@ -494,6 +517,5 @@
+             }
+             System.out.println();
+         }
+-
+     }
+ }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ArtifactsWorkspaceSettings\">\n    <artifacts-to-build>\n      <artifact name=\"BlokusUI:jar\" />\n    </artifacts-to-build>\n  </component>\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"ec6b377b-f7a5-4cf9-8ed0-e6bddafc9303\" name=\"Changes\" comment=\"Fixed crash on turn 3\" />\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"ExternalProjectsData\">\n    <projectState path=\"$PROJECT_DIR$\">\n      <ProjectState />\n    </projectState>\n  </component>\n  <component name=\"ExternalProjectsManager\">\n    <system id=\"GRADLE\">\n      <state>\n        <task path=\"$PROJECT_DIR$\">\n          <activation />\n        </task>\n        <projects_view>\n          <tree_state>\n            <expand>\n              <path>\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\n                <item name=\"groupProj\" type=\"f1a62948:ProjectNode\" />\n              </path>\n              <path>\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\n                <item name=\"groupProj\" type=\"f1a62948:ProjectNode\" />\n                <item name=\"desktop\" type=\"2d1252cf:ModuleNode\" />\n              </path>\n            </expand>\n            <select />\n          </tree_state>\n        </projects_view>\n      </state>\n    </system>\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Class\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <favorite-branches>\n      <branch-storage>\n        <map>\n          <entry type=\"REMOTE\">\n            <value>\n              <list>\n                <branch-info repo=\"$PROJECT_DIR$\" source=\"origin/Liam\" />\n              </list>\n            </value>\n          </entry>\n        </map>\n      </branch-storage>\n    </favorite-branches>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GitSEFilterConfiguration\">\n    <file-type-list>\n      <filtered-out-file-type name=\"LOCAL_BRANCH\" />\n      <filtered-out-file-type name=\"REMOTE_BRANCH\" />\n      <filtered-out-file-type name=\"TAG\" />\n      <filtered-out-file-type name=\"COMMIT_BY_MESSAGE\" />\n    </file-type-list>\n  </component>\n  <component name=\"GithubDefaultAccount\">\n    <option name=\"defaultAccountId\" value=\"ce80121e-de82-4aab-8664-93d87d21874e\" />\n  </component>\n  <component name=\"ProjectId\" id=\"26fl9khFwJy8gKEZu2A8nNRrOIo\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">\n    <property name=\"ASKED_ADD_EXTERNAL_FILES\" value=\"true\" />\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$\" />\n    <property name=\"node.js.detected.package.eslint\" value=\"true\" />\n    <property name=\"node.js.detected.package.tslint\" value=\"true\" />\n    <property name=\"node.js.selected.package.eslint\" value=\"(autodetect)\" />\n    <property name=\"node.js.selected.package.tslint\" value=\"(autodetect)\" />\n    <property name=\"nodejs_package_manager_path\" value=\"npm\" />\n    <property name=\"project.structure.last.edited\" value=\"Artifacts\" />\n    <property name=\"project.structure.proportion\" value=\"0.15\" />\n    <property name=\"project.structure.side.proportion\" value=\"0.2\" />\n    <property name=\"settings.editor.selected.configurable\" value=\"preferences.lookFeel\" />\n  </component>\n  <component name=\"RecentsManager\">\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"C:\\Users\\liamp\\Desktop\\BlokusUI\\core\\src\\com\\mygdx\\game\" />\n      <recent name=\"C:\\Users\\liamp\\Desktop\\BlokusUI\\assets\" />\n      <recent name=\"C:\\Users\\liamp\\Desktop\\BlokusUI\\assets\\images\" />\n    </key>\n  </component>\n  <component name=\"RunManager\" selected=\"Application.DesktopLauncher\">\n    <configuration name=\"DesktopLauncher\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"ALTERNATIVE_JRE_PATH\" value=\"openjdk-17\" />\n      <option name=\"ALTERNATIVE_JRE_PATH_ENABLED\" value=\"true\" />\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.mygdx.game.DesktopLauncher\" />\n      <module name=\"groupProj.desktop.main\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.mygdx.game.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"Threads$MultipleThreadsExample\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.mygdx.game.Threads$MultipleThreadsExample\" />\n      <module name=\"BlokusUI.core.main\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.mygdx.game.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"Threads\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.mygdx.game.Threads\" />\n      <module name=\"BlokusUI.core.main\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.mygdx.game.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"BlokusUI [build]\" type=\"GradleRunConfiguration\" factoryName=\"Gradle\" temporary=\"true\">\n      <ExternalSystemSettings>\n        <option name=\"executionName\" />\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\n        <option name=\"externalSystemIdString\" value=\"GRADLE\" />\n        <option name=\"scriptParameters\" />\n        <option name=\"taskDescriptions\">\n          <list />\n        </option>\n        <option name=\"taskNames\">\n          <list>\n            <option value=\"build\" />\n          </list>\n        </option>\n        <option name=\"vmOptions\" />\n      </ExternalSystemSettings>\n      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>\n      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>\n      <DebugAllEnabled>false</DebugAllEnabled>\n      <method v=\"2\" />\n    </configuration>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"Application.DesktopLauncher\" />\n        <item itemvalue=\"Application.Threads\" />\n        <item itemvalue=\"Application.Threads$MultipleThreadsExample\" />\n        <item itemvalue=\"Gradle.BlokusUI [build]\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"ec6b377b-f7a5-4cf9-8ed0-e6bddafc9303\" name=\"Changes\" comment=\"\" />\n      <created>1647822372210</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1647822372210</updated>\n      <workItem from=\"1647822373781\" duration=\"34822000\" />\n      <workItem from=\"1647907115354\" duration=\"645000\" />\n      <workItem from=\"1648743096698\" duration=\"2521000\" />\n      <workItem from=\"1648931039475\" duration=\"44687000\" />\n      <workItem from=\"1649190434367\" duration=\"5625000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"UI push\">\n      <created>1648807513410</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1648807513410</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"Red pieces can now be placed on the board\">\n      <created>1648943434002</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1648943434002</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"BOth pieces can be placed and cycles between players, basic fist move validation added, need to add more communication between each thread\">\n      <created>1649078119561</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1649078119561</updated>\n    </task>\n    <task id=\"LOCAL-00004\" summary=\"first move works\">\n      <created>1649081729316</created>\n      <option name=\"number\" value=\"00004\" />\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1649081729316</updated>\n    </task>\n    <task id=\"LOCAL-00005\" summary=\"first move works\">\n      <created>1649081810798</created>\n      <option name=\"number\" value=\"00005\" />\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1649081810798</updated>\n    </task>\n    <task id=\"LOCAL-00006\" summary=\"Fixed Jordans mistake\">\n      <created>1649165883132</created>\n      <option name=\"number\" value=\"00006\" />\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1649165883132</updated>\n    </task>\n    <task id=\"LOCAL-00007\" summary=\"added second pipeline to avoid clashes of messages\">\n      <created>1649194520396</created>\n      <option name=\"number\" value=\"00007\" />\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1649194520396</updated>\n    </task>\n    <task id=\"LOCAL-00008\" summary=\"Fixed crash on turn 3\">\n      <created>1649334881189</created>\n      <option name=\"number\" value=\"00008\" />\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1649334881189</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"9\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\n    <MESSAGE value=\"UI push\" />\n    <MESSAGE value=\"Red pieces can now be placed on the board\" />\n    <MESSAGE value=\"BOth pieces can be placed and cycles between players, basic fist move validation added, need to add more communication between each thread\" />\n    <MESSAGE value=\"first move works\" />\n    <MESSAGE value=\"Fixed Jordans mistake\" />\n    <MESSAGE value=\"added second pipeline to avoid clashes of messages\" />\n    <MESSAGE value=\"Fixed crash on turn 3\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Fixed crash on turn 3\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 7b648572b6610ca9ea7d4d1b4b2d86558eada4d4)
++++ b/.idea/workspace.xml	(date 1649678168099)
+@@ -9,7 +9,11 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="ec6b377b-f7a5-4cf9-8ed0-e6bddafc9303" name="Changes" comment="Fixed crash on turn 3" />
++    <list default="true" id="ec6b377b-f7a5-4cf9-8ed0-e6bddafc9303" name="Changes" comment="Fixed crash on turn 3">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/core/src/com/mygdx/game/Blocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/Blocks.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/core/src/com/mygdx/game/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/mygdx/game/Player.java" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -31,12 +35,32 @@
+             <expand>
+               <path>
+                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+-                <item name="groupProj" type="f1a62948:ProjectNode" />
++                <item name="Blokusduo" type="f1a62948:ProjectNode" />
++              </path>
++              <path>
++                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
++                <item name="Blokusduo" type="f1a62948:ProjectNode" />
++                <item name="desktop" type="2d1252cf:ModuleNode" />
+               </path>
+               <path>
+                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+-                <item name="groupProj" type="f1a62948:ProjectNode" />
++                <item name="Blokusduo" type="f1a62948:ProjectNode" />
+                 <item name="desktop" type="2d1252cf:ModuleNode" />
++                <item name="Tasks" type="e4a08cd1:TasksNode" />
++              </path>
++              <path>
++                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
++                <item name="Blokusduo" type="f1a62948:ProjectNode" />
++                <item name="desktop" type="2d1252cf:ModuleNode" />
++                <item name="Tasks" type="e4a08cd1:TasksNode" />
++                <item name="other" type="c8890929:TasksNode$1" />
++              </path>
++              <path>
++                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
++                <item name="Blokusduo" type="f1a62948:ProjectNode" />
++                <item name="desktop" type="2d1252cf:ModuleNode" />
++                <item name="Tasks" type="e4a08cd1:TasksNode" />
++                <item name="verification" type="c8890929:TasksNode$1" />
+               </path>
+             </expand>
+             <select />
+@@ -76,9 +100,6 @@
+       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+     </file-type-list>
+   </component>
+-  <component name="GithubDefaultAccount">
+-    <option name="defaultAccountId" value="ce80121e-de82-4aab-8664-93d87d21874e" />
+-  </component>
+   <component name="ProjectId" id="26fl9khFwJy8gKEZu2A8nNRrOIo" />
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+   <component name="ProjectViewState">
+@@ -171,6 +192,12 @@
+       <DebugAllEnabled>false</DebugAllEnabled>
+       <method v="2" />
+     </configuration>
++    <list>
++      <item itemvalue="Application.DesktopLauncher" />
++      <item itemvalue="Application.Threads" />
++      <item itemvalue="Application.Threads$MultipleThreadsExample" />
++      <item itemvalue="Gradle.BlokusUI [build]" />
++    </list>
+     <recent_temporary>
+       <list>
+         <item itemvalue="Application.DesktopLauncher" />
+@@ -279,4 +306,12 @@
+     <MESSAGE value="Fixed crash on turn 3" />
+     <option name="LAST_COMMIT_MESSAGE" value="Fixed crash on turn 3" />
+   </component>
++  <component name="XDebuggerManager">
++    <pin-to-top-manager>
++      <pinned-members>
++        <PinnedItemInfo parentTag="Blocks" memberName="piecenumber" />
++        <PinnedItemInfo parentTag="Blocks" memberName="piecename" />
++      </pinned-members>
++    </pin-to-top-manager>
++  </component>
+ </project>
+\ No newline at end of file

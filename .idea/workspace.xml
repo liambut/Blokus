@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="groupProj:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ec6b377b-f7a5-4cf9-8ed0-e6bddafc9303" name="Changes" comment="AI start">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/Salami/Matrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/Salami/Matrix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/Salami/NeuralNetwork.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/Salami/NeuralNetwork.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/Salami/SimpleBotPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/Salami/SimpleBotPlayer.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/desktop">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Blokusduo" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Blokusduo" type="f1a62948:ProjectNode" />
+                <item name="desktop" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Blokusduo" type="f1a62948:ProjectNode" />
+                <item name="desktop" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Blokusduo" type="f1a62948:ProjectNode" />
+                <item name="desktop" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="other" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Blokusduo" type="f1a62948:ProjectNode" />
+                <item name="desktop" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="verification" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/Liam" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="ce80121e-de82-4aab-8664-93d87d21874e" />
+  </component>
+  <component name="ProjectId" id="26fl9khFwJy8gKEZu2A8nNRrOIo" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\liamp\Desktop\College\2nd Year\groupProj" />
+      <recent name="C:\Users\liamp\Desktop\College\2nd Year\groupProj\out\artifacts\groupProj_jar" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\liamp\Desktop\College\2nd Year\groupProj\out\artifacts\groupProj_jar\assets" />
+      <recent name="C:\Users\liamp\Desktop\BlokusUI\core\src\com\mygdx\game" />
+      <recent name="C:\Users\liamp\Desktop\BlokusUI\assets" />
+      <recent name="C:\Users\liamp\Desktop\BlokusUI\assets\images" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.DesktopLauncher">
+    <configuration name="DesktopLauncher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.mygdx.game.DesktopLauncher" />
+      <module name="groupProj.desktop.main" />
+      <option name="PROGRAM_PARAMETERS" value="-gui" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.mygdx.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Threads$MultipleThreadsExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.mygdx.game.Threads$MultipleThreadsExample" />
+      <module name="BlokusUI.core.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.mygdx.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Threads" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.mygdx.game.Threads" />
+      <module name="BlokusUI.core.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.mygdx.game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BlokusUI [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="Blokusduo:desktop [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/desktop" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="run" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.DesktopLauncher" />
+      <item itemvalue="Application.Threads" />
+      <item itemvalue="Application.Threads$MultipleThreadsExample" />
+      <item itemvalue="Gradle.BlokusUI [build]" />
+      <item itemvalue="Gradle.Blokusduo:desktop [run]" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.DesktopLauncher" />
+        <item itemvalue="Gradle.Blokusduo:desktop [run]" />
+        <item itemvalue="Application.Threads" />
+        <item itemvalue="Application.Threads$MultipleThreadsExample" />
+        <item itemvalue="Gradle.BlokusUI [build]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ec6b377b-f7a5-4cf9-8ed0-e6bddafc9303" name="Changes" comment="" />
+      <created>1647822372210</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1647822372210</updated>
+      <workItem from="1647822373781" duration="34822000" />
+      <workItem from="1647907115354" duration="645000" />
+      <workItem from="1648743096698" duration="2521000" />
+      <workItem from="1648931039475" duration="44687000" />
+      <workItem from="1649190434367" duration="28010000" />
+      <workItem from="1649794880460" duration="1222000" />
+      <workItem from="1649857142104" duration="937000" />
+      <workItem from="1650061051755" duration="1611000" />
+      <workItem from="1650402440866" duration="6296000" />
+    </task>
+    <task id="LOCAL-00001" summary="UI push">
+      <created>1648807513410</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1648807513410</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Red pieces can now be placed on the board">
+      <created>1648943434002</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1648943434002</updated>
+    </task>
+    <task id="LOCAL-00003" summary="BOth pieces can be placed and cycles between players, basic fist move validation added, need to add more communication between each thread">
+      <created>1649078119561</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1649078119561</updated>
+    </task>
+    <task id="LOCAL-00004" summary="first move works">
+      <created>1649081729316</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1649081729316</updated>
+    </task>
+    <task id="LOCAL-00005" summary="first move works">
+      <created>1649081810798</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1649081810798</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Fixed Jordans mistake">
+      <created>1649165883132</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1649165883132</updated>
+    </task>
+    <task id="LOCAL-00007" summary="added second pipeline to avoid clashes of messages">
+      <created>1649194520396</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1649194520396</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Fixed crash on turn 3">
+      <created>1649334881189</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1649334881189</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Fixed crash on turn 3">
+      <created>1649341403047</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1649341403047</updated>
+    </task>
+    <task id="LOCAL-00010" summary="fixed placement bug when pieces are flipped">
+      <created>1649457425577</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1649457425577</updated>
+    </task>
+    <task id="LOCAL-00011" summary="fixed game crashing when no piece selected">
+      <created>1649457791845</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1649457791845</updated>
+    </task>
+    <task id="LOCAL-00012" summary="pieces follow cursor">
+      <created>1649679552526</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1649679552526</updated>
+    </task>
+    <task id="LOCAL-00013" summary="added easter egg">
+      <created>1649686134605</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1649686134605</updated>
+    </task>
+    <task id="LOCAL-00014" summary="added easter egg">
+      <created>1649686832482</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1649686832482</updated>
+    </task>
+    <task id="LOCAL-00015" summary="neon cat">
+      <created>1649689282450</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1649689282450</updated>
+    </task>
+    <task id="LOCAL-00016" summary="added background music">
+      <created>1649690366680</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1649690366680</updated>
+    </task>
+    <task id="LOCAL-00017" summary="added background music">
+      <created>1649690390303</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1649690390303</updated>
+    </task>
+    <task id="LOCAL-00018" summary="fixed music pausing on placement of piece">
+      <created>1649692544830</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1649692544830</updated>
+    </task>
+    <task id="LOCAL-00019" summary="fixed music pausing on placement of piece">
+      <created>1649692602399</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1649692602399</updated>
+    </task>
+    <task id="LOCAL-00020" summary="no music played if names are blank (makes debugging less annoying)">
+      <created>1649697645969</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1649697645969</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Now tracks score and can handle turn skipping">
+      <created>1649703894395</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1649703894395</updated>
+    </task>
+    <task id="LOCAL-00022" summary="player interchangability being added">
+      <created>1649707753366</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1649707753366</updated>
+    </task>
+    <task id="LOCAL-00023" summary="player interchangability being added">
+      <created>1649708654688</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1649708654688</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Finished?">
+      <created>1649713038074</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1649713038074</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Finished">
+      <created>1649757790465</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1649757790465</updated>
+    </task>
+    <task id="LOCAL-00026" summary="AI start">
+      <created>1650404823756</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1650404823757</updated>
+    </task>
+    <task id="LOCAL-00027" summary="AI start">
+      <created>1650463373155</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1650463373155</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="UI push" />
+    <MESSAGE value="Red pieces can now be placed on the board" />
+    <MESSAGE value="BOth pieces can be placed and cycles between players, basic fist move validation added, need to add more communication between each thread" />
+    <MESSAGE value="first move works" />
+    <MESSAGE value="Fixed Jordans mistake" />
+    <MESSAGE value="added second pipeline to avoid clashes of messages" />
+    <MESSAGE value="Fixed crash on turn 3" />
+    <MESSAGE value="fixed placement bug when pieces are flipped" />
+    <MESSAGE value="fixed game crashing when no piece selected" />
+    <MESSAGE value="game be doing things now we nearly done" />
+    <MESSAGE value="pieces follow cursor" />
+    <MESSAGE value="added easter egg" />
+    <MESSAGE value="neon cat" />
+    <MESSAGE value="added background music" />
+    <MESSAGE value="fixed music pausing on placement of piece" />
+    <MESSAGE value="no music played if names are blank (makes debugging less annoying)" />
+    <MESSAGE value="Now tracks score and can handle turn skipping" />
+    <MESSAGE value="player interchangability being added" />
+    <MESSAGE value="Finished?" />
+    <MESSAGE value="Finished" />
+    <MESSAGE value="AI start" />
+    <option name="LAST_COMMIT_MESSAGE" value="AI start" />
+  </component>
+  <component name="XDebuggerManager">
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="Blocks" memberName="piecenumber" />
+        <PinnedItemInfo parentTag="Blocks" memberName="piecename" />
+      </pinned-members>
+    </pin-to-top-manager>
+  </component>
+</project>

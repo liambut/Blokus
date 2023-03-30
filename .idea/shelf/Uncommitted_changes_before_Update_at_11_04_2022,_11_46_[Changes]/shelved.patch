@@ -1,0 +1,103 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ArtifactsWorkspaceSettings\">\n    <artifacts-to-build>\n      <artifact name=\"BlokusUI:jar\" />\n    </artifacts-to-build>\n  </component>\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"ec6b377b-f7a5-4cf9-8ed0-e6bddafc9303\" name=\"Changes\" comment=\"Fixed crash on turn 3\" />\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"ExternalProjectsData\">\n    <projectState path=\"$PROJECT_DIR$\">\n      <ProjectState />\n    </projectState>\n  </component>\n  <component name=\"ExternalProjectsManager\">\n    <system id=\"GRADLE\">\n      <state>\n        <task path=\"$PROJECT_DIR$\">\n          <activation />\n        </task>\n        <projects_view>\n          <tree_state>\n            <expand>\n              <path>\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\n                <item name=\"groupProj\" type=\"f1a62948:ProjectNode\" />\n              </path>\n              <path>\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\n                <item name=\"groupProj\" type=\"f1a62948:ProjectNode\" />\n                <item name=\"desktop\" type=\"2d1252cf:ModuleNode\" />\n              </path>\n            </expand>\n            <select />\n          </tree_state>\n        </projects_view>\n      </state>\n    </system>\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Class\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <favorite-branches>\n      <branch-storage>\n        <map>\n          <entry type=\"REMOTE\">\n            <value>\n              <list>\n                <branch-info repo=\"$PROJECT_DIR$\" source=\"origin/Liam\" />\n              </list>\n            </value>\n          </entry>\n        </map>\n      </branch-storage>\n    </favorite-branches>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GitSEFilterConfiguration\">\n    <file-type-list>\n      <filtered-out-file-type name=\"LOCAL_BRANCH\" />\n      <filtered-out-file-type name=\"REMOTE_BRANCH\" />\n      <filtered-out-file-type name=\"TAG\" />\n      <filtered-out-file-type name=\"COMMIT_BY_MESSAGE\" />\n    </file-type-list>\n  </component>\n  <component name=\"GithubDefaultAccount\">\n    <option name=\"defaultAccountId\" value=\"ce80121e-de82-4aab-8664-93d87d21874e\" />\n  </component>\n  <component name=\"ProjectId\" id=\"26fl9khFwJy8gKEZu2A8nNRrOIo\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">\n    <property name=\"ASKED_ADD_EXTERNAL_FILES\" value=\"true\" />\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$\" />\n    <property name=\"node.js.detected.package.eslint\" value=\"true\" />\n    <property name=\"node.js.detected.package.tslint\" value=\"true\" />\n    <property name=\"node.js.selected.package.eslint\" value=\"(autodetect)\" />\n    <property name=\"node.js.selected.package.tslint\" value=\"(autodetect)\" />\n    <property name=\"nodejs_package_manager_path\" value=\"npm\" />\n    <property name=\"project.structure.last.edited\" value=\"Artifacts\" />\n    <property name=\"project.structure.proportion\" value=\"0.15\" />\n    <property name=\"project.structure.side.proportion\" value=\"0.2\" />\n    <property name=\"settings.editor.selected.configurable\" value=\"preferences.lookFeel\" />\n  </component>\n  <component name=\"RecentsManager\">\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"C:\\Users\\liamp\\Desktop\\BlokusUI\\core\\src\\com\\mygdx\\game\" />\n      <recent name=\"C:\\Users\\liamp\\Desktop\\BlokusUI\\assets\" />\n      <recent name=\"C:\\Users\\liamp\\Desktop\\BlokusUI\\assets\\images\" />\n    </key>\n  </component>\n  <component name=\"RunManager\" selected=\"Application.DesktopLauncher\">\n    <configuration name=\"DesktopLauncher\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"ALTERNATIVE_JRE_PATH\" value=\"openjdk-17\" />\n      <option name=\"ALTERNATIVE_JRE_PATH_ENABLED\" value=\"true\" />\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.mygdx.game.DesktopLauncher\" />\n      <module name=\"groupProj.desktop.main\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.mygdx.game.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"Threads$MultipleThreadsExample\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.mygdx.game.Threads$MultipleThreadsExample\" />\n      <module name=\"BlokusUI.core.main\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.mygdx.game.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"Threads\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.mygdx.game.Threads\" />\n      <module name=\"BlokusUI.core.main\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.mygdx.game.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"BlokusUI [build]\" type=\"GradleRunConfiguration\" factoryName=\"Gradle\" temporary=\"true\">\n      <ExternalSystemSettings>\n        <option name=\"executionName\" />\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\n        <option name=\"externalSystemIdString\" value=\"GRADLE\" />\n        <option name=\"scriptParameters\" />\n        <option name=\"taskDescriptions\">\n          <list />\n        </option>\n        <option name=\"taskNames\">\n          <list>\n            <option value=\"build\" />\n          </list>\n        </option>\n        <option name=\"vmOptions\" />\n      </ExternalSystemSettings>\n      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>\n      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>\n      <DebugAllEnabled>false</DebugAllEnabled>\n      <method v=\"2\" />\n    </configuration>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"Application.DesktopLauncher\" />\n        <item itemvalue=\"Application.Threads\" />\n        <item itemvalue=\"Application.Threads$MultipleThreadsExample\" />\n        <item itemvalue=\"Gradle.BlokusUI [build]\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"ec6b377b-f7a5-4cf9-8ed0-e6bddafc9303\" name=\"Changes\" comment=\"\" />\n      <created>1647822372210</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1647822372210</updated>\n      <workItem from=\"1647822373781\" duration=\"34822000\" />\n      <workItem from=\"1647907115354\" duration=\"645000\" />\n      <workItem from=\"1648743096698\" duration=\"2521000\" />\n      <workItem from=\"1648931039475\" duration=\"44687000\" />\n      <workItem from=\"1649190434367\" duration=\"5625000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"UI push\">\n      <created>1648807513410</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1648807513410</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"Red pieces can now be placed on the board\">\n      <created>1648943434002</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1648943434002</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"BOth pieces can be placed and cycles between players, basic fist move validation added, need to add more communication between each thread\">\n      <created>1649078119561</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1649078119561</updated>\n    </task>\n    <task id=\"LOCAL-00004\" summary=\"first move works\">\n      <created>1649081729316</created>\n      <option name=\"number\" value=\"00004\" />\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1649081729316</updated>\n    </task>\n    <task id=\"LOCAL-00005\" summary=\"first move works\">\n      <created>1649081810798</created>\n      <option name=\"number\" value=\"00005\" />\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1649081810798</updated>\n    </task>\n    <task id=\"LOCAL-00006\" summary=\"Fixed Jordans mistake\">\n      <created>1649165883132</created>\n      <option name=\"number\" value=\"00006\" />\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1649165883132</updated>\n    </task>\n    <task id=\"LOCAL-00007\" summary=\"added second pipeline to avoid clashes of messages\">\n      <created>1649194520396</created>\n      <option name=\"number\" value=\"00007\" />\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1649194520396</updated>\n    </task>\n    <task id=\"LOCAL-00008\" summary=\"Fixed crash on turn 3\">\n      <created>1649334881189</created>\n      <option name=\"number\" value=\"00008\" />\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1649334881189</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"9\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\n    <MESSAGE value=\"UI push\" />\n    <MESSAGE value=\"Red pieces can now be placed on the board\" />\n    <MESSAGE value=\"BOth pieces can be placed and cycles between players, basic fist move validation added, need to add more communication between each thread\" />\n    <MESSAGE value=\"first move works\" />\n    <MESSAGE value=\"Fixed Jordans mistake\" />\n    <MESSAGE value=\"added second pipeline to avoid clashes of messages\" />\n    <MESSAGE value=\"Fixed crash on turn 3\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Fixed crash on turn 3\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 7b648572b6610ca9ea7d4d1b4b2d86558eada4d4)
++++ b/.idea/workspace.xml	(date 1649617667649)
+@@ -9,7 +9,9 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="ec6b377b-f7a5-4cf9-8ed0-e6bddafc9303" name="Changes" comment="Fixed crash on turn 3" />
++    <list default="true" id="ec6b377b-f7a5-4cf9-8ed0-e6bddafc9303" name="Changes" comment="Fixed crash on turn 3">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -24,6 +26,9 @@
+     <system id="GRADLE">
+       <state>
+         <task path="$PROJECT_DIR$">
++          <activation />
++        </task>
++        <task path="$PROJECT_DIR$/desktop">
+           <activation />
+         </task>
+         <projects_view>
+@@ -31,12 +36,32 @@
+             <expand>
+               <path>
+                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+-                <item name="groupProj" type="f1a62948:ProjectNode" />
++                <item name="Blokusduo" type="f1a62948:ProjectNode" />
++              </path>
++              <path>
++                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
++                <item name="Blokusduo" type="f1a62948:ProjectNode" />
++                <item name="desktop" type="2d1252cf:ModuleNode" />
++              </path>
++              <path>
++                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
++                <item name="Blokusduo" type="f1a62948:ProjectNode" />
++                <item name="desktop" type="2d1252cf:ModuleNode" />
++                <item name="Tasks" type="e4a08cd1:TasksNode" />
+               </path>
+               <path>
+                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+-                <item name="groupProj" type="f1a62948:ProjectNode" />
++                <item name="Blokusduo" type="f1a62948:ProjectNode" />
+                 <item name="desktop" type="2d1252cf:ModuleNode" />
++                <item name="Tasks" type="e4a08cd1:TasksNode" />
++                <item name="other" type="c8890929:TasksNode$1" />
++              </path>
++              <path>
++                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
++                <item name="Blokusduo" type="f1a62948:ProjectNode" />
++                <item name="desktop" type="2d1252cf:ModuleNode" />
++                <item name="Tasks" type="e4a08cd1:TasksNode" />
++                <item name="verification" type="c8890929:TasksNode$1" />
+               </path>
+             </expand>
+             <select />
+@@ -75,9 +100,6 @@
+       <filtered-out-file-type name="TAG" />
+       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+     </file-type-list>
+-  </component>
+-  <component name="GithubDefaultAccount">
+-    <option name="defaultAccountId" value="ce80121e-de82-4aab-8664-93d87d21874e" />
+   </component>
+   <component name="ProjectId" id="26fl9khFwJy8gKEZu2A8nNRrOIo" />
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+@@ -171,6 +193,12 @@
+       <DebugAllEnabled>false</DebugAllEnabled>
+       <method v="2" />
+     </configuration>
++    <list>
++      <item itemvalue="Application.DesktopLauncher" />
++      <item itemvalue="Application.Threads" />
++      <item itemvalue="Application.Threads$MultipleThreadsExample" />
++      <item itemvalue="Gradle.BlokusUI [build]" />
++    </list>
+     <recent_temporary>
+       <list>
+         <item itemvalue="Application.DesktopLauncher" />
+@@ -279,4 +307,12 @@
+     <MESSAGE value="Fixed crash on turn 3" />
+     <option name="LAST_COMMIT_MESSAGE" value="Fixed crash on turn 3" />
+   </component>
++  <component name="XDebuggerManager">
++    <pin-to-top-manager>
++      <pinned-members>
++        <PinnedItemInfo parentTag="Blocks" memberName="piecenumber" />
++        <PinnedItemInfo parentTag="Blocks" memberName="piecename" />
++      </pinned-members>
++    </pin-to-top-manager>
++  </component>
+ </project>
+\ No newline at end of file
